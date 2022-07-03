@@ -43,8 +43,6 @@ const App = observer(() => {
   const [fetchedUser, setUser] = useState(null);
   const [popout, setPopout] = useState(null);
   const [wsConnecting, setWsConnecting] = useState(false);
-  // Стейт приложения
-  // const [activeModal, setActiveModal] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -55,17 +53,10 @@ const App = observer(() => {
     fetchData();
   }, []);
 
-  // useEffect(() => {
-  //   // console.log("UserStore token", toJS(UserStore.token));
-  //   console.log("UserStore token", UserStore.token);
-  //   console.log("UserStore groups", toJS(UserStore.groups));
-  // }, [UserStore.token, UserStore.groups]);
-
   return (
     <>
       <Router basepath={`${routeUrl === "" ? "/" : routeUrl}`}>
         <Dashboard path="dashboard" />
-        {/* <ParentComponent path="dashboard" /> */}
         <Exchange path="exchange" />
         <Wallet path="wallet" />
         <CreateCoin path="create-coin" />
@@ -74,30 +65,7 @@ const App = observer(() => {
         <Redirect from="/" to={`${routeUrl}/dashboard`} noThrow />
       </Router>
       <Footer />
-
       <RootModal />
-
-      {/* {SnackbarStore.showSnackbar && (
-        <Snackbar
-          duration={3000}
-          layout="horizontal"
-          onClose={() => SnackbarStore.setShowSnackbar(false)}
-          before={
-            <Avatar
-              size={24}
-              style={{ backgroundColor: SnackbarStore.snackbarColor }}
-            >
-              {SnackbarStore.snackbarType === "success" ? (
-                <Icon16Done fill="#fff" width={14} height={14} />
-              ) : (
-                <Icon16Cancel fill="#fff" width={14} height={14} />
-              )}
-            </Avatar>
-          }
-        >
-          {SnackbarStore.snackbarText}
-        </Snackbar>
-      )} */}
     </>
   );
 });
